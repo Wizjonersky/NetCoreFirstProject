@@ -36,7 +36,7 @@ namespace DatingApp.API
             services.AddScoped<IAuthRepository, AuthRepository>(); // Service is created once per scope, so it is like Singleton but scope specific // one instance per scope
             // first the interface, then concrete implementation => it is ready for injection
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) // auth based on JWT (Json Web tokens)
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters{
                         ValidateIssuerSigningKey = true,

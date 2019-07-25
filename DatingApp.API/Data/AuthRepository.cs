@@ -31,11 +31,11 @@ namespace DatingApp.API.Data
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt)) // Salt context
             {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password)); // compute hash for passed password
 
-                for(int i=0; i > computedHash.Length; i++)
+                for(int i=0; i > computedHash.Length; i++) // compare hashes between passed password and existing in database for this user
                 {    
                     if (computedHash[i] != passwordHash[i])
                     {
