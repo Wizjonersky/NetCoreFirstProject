@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  baseUrl = 'http://localhost:5000/api/auth';
+  baseUrl = 'http://localhost:5000/api/auth/';
 
 constructor(private http: HttpClient) { }
 
@@ -16,9 +16,9 @@ login(model: any) {
   .pipe(
     map((response: any) => {
       const user = response;
-
+      console.log(user);
       if (user) {
-        localStorage.setItem('token', user.token);
+        localStorage.setItem('token', user.token); // get token from response  and store it in browser cache
       }
     })
   ); // pipe -> get response and do smoething with it
