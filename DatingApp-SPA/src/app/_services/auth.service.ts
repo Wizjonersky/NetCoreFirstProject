@@ -24,4 +24,8 @@ login(model: any) {
   ); // pipe -> get response and do smoething with it
 }
 
+register(model: any) {
+  return this.http.post(this.baseUrl + 'register', model);
+}
+
 }
